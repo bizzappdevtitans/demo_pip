@@ -1,0 +1,124 @@
+-------------------- Generate SSH Key --------------------
+Create SSH
+- ssh-keygen -t ed25519 -C "EMP-shortcode@BAD"
+Enter file in which to save the key (/home/bad/.ssh/id_rsa): id_rsa
+create ssh key with file name id_rsa.
+Enter same passphrase again: $Enter password.
+
+
+-------------------- Git Commands --------------------
+
+1) Get code from git repository:
+- git clone $SSH_LINK
+
+
+2) Create Branch:
+- git checkout -b $NEW_BRACH_NAME
+
+NOTE: 
+Branch name must be $odoo_version-$Tracking_number-$Task_name-BAD-$Emp_short_tag
+15.0-T009-Python-Training-BAD-SUM
+
+
+3) Check status
+-> After changing in existing file or after creating new files
+- git status
+
+Note:
+-> Changed files or new files display in red color.
+
+
+4) Check difference in the files
+-> After chaning in existing file or after creating new files
+- git diff
+
+
+5) Remove all code changes
+- git stash
+
+
+6) Get changes back that we have stash
+- git stash pop
+
+
+5) Add file changes.
+- git add --all or git add .
+-> Multiple file changed and want to add only specific file:
+- git add $File_Name
+
+
+6) Git commit
+->
+TAGS = ADD: Add new files, IMP: Make changes in existing files, REM: Remove any files, i18n: Update PO(translation file.)
+- git commit -am "[TAGS][Tracking-Number] $Module-Name: Proper Commit Message."
+
+
+7) Git Push
+-> Push your code to the git in your branch.
+- git push
+
+
+8) Check branch of repository.
+-> git branch --all
+
+
+9) When create a new branch and then doing pull for 1st time.
+- git branch --set-upstream-to=origin/14.0-T009-Python-Training-BAD-SUM 14.0-T009-Python-Training-BAD-SUM
+
+
+10)
+-> When working on same branch, commit code without pull that is commited before your commit then not allow to push your code, apply following command that will reset your last commit.
+- git reset --soft HEAD~1
+- git status
+-> Diplay status in Green.
+- git stash
+- git pull
+-> Get latest code changes. If conflicts then solve it.
+- git add --all
+- git status
+- git commit
+- git push
+
+
+11) Rebase your task branch with main(production) branch.
+- git merge $MAIN(PRODUCTION) BRANCH
+-> Update your branch with latest code from the main branch.
+
+12) Delete remote branch:
+- git push -d origin 14.0-T009-Python-Training-BAD-SUM
+- git push origin --delete <branch-name>
+
+13) Delete local branch:
+- git branch -D $Branch-name
+
+
+14) To check commit history
+- git log
+- git lg
+- tig
+-> To install tig: sudo apt install tig
+
+15) for empty commit
+- use empty commit flag
+- (--allow-empty)
+
+16) If this is shown ~/v14/pledra/fielmann-de/odoo/custom/src/fielmann-de ((no branch, rebasing 14.0-T-02150-po-files-fl-de-BAD-PIP))
+
+- then use "l" command
+
+17) When any branch is diverged
+- git reset --hard origin/branch_name
+
+----------------------- Create Git Alias -----------------------
+-> Add following alias to the .bashrc file.
+
+- alias gck="git ck"
+- alias gp="git pull"
+- alias gs="git status"
+- alias gsh="git stash"
+- alias gshp="git stash pop"
+- alias gdf="git diff"
+- alias gal="git add --all"
+- alias gc="git commit -am"
+- alias gps="git push"
+
